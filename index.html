@@ -15,24 +15,27 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #0a0a0a;
-      --white: #f5f0e8;
-      --blue: #1a5cff;
-      --red: #d42b2b;
-      --cream: #f0ead8;
+      --bg:        #f5f0e8;
+      --bg-alt:    #ede8d8;
+      --bg-card:   #ffffff;
+      --bg-hover:  #f9f5ee;
+      --text:      #0a0a0a;
+      --muted:     rgba(10,10,10,0.5);
+      --faint:     rgba(10,10,10,0.25);
+      --border:    rgba(10,10,10,0.09);
+      --blue:      #1a5cff;
       --sur-green: #2d5a3d;
-      --sur-gold: #b8860b;
-      --norte-teal: #6bbfc4;
-      --norte-orange: #e8a020;
-      --norte-rust: #8b3a1e;
+      --sur-gold:  #b8860b;
+      --norte-teal:#6bbfc4;
+      --norte-org: #e8a020;
       --este-dark: #1a2a1a;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--black);
-      color: var(--white);
+      background: var(--bg);
+      color: var(--text);
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
       overflow-x: hidden;
@@ -46,25 +49,18 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.2rem 4vw;
-      background: rgba(10,10,10,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0.8rem 4vw;
+      background: rgba(245,240,232,0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .nav-logo img {
-      height: 38px;
-      filter: brightness(1.1);
-    }
+    .nav-logo img { height: 60px; width: auto; }
 
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 
     .nav-links a {
-      color: rgba(245,240,232,0.6);
+      color: var(--muted);
       text-decoration: none;
       font-size: 0.78rem;
       letter-spacing: 0.12em;
@@ -72,17 +68,16 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover { color: var(--text); }
 
     .nav-cta {
-      background: var(--blue);
+      background: var(--blue) !important;
       color: #fff !important;
       padding: 0.55rem 1.4rem;
       border-radius: 2px;
-      letter-spacing: 0.1em !important;
     }
 
-    .nav-cta:hover { background: #2b6bff; color: #fff !important; }
+    .nav-cta:hover { background: #2b6bff !important; }
 
     .hamburger {
       display: none;
@@ -96,9 +91,8 @@
 
     .hamburger span {
       display: block;
-      width: 26px;
-      height: 2px;
-      background: var(--white);
+      width: 26px; height: 2px;
+      background: var(--text);
       transition: all 0.3s;
     }
 
@@ -109,14 +103,14 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      padding-top: 80px;
+      padding-top: 90px;
     }
 
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('logo_lumi.png') center/cover no-repeat;
-      filter: brightness(0.35) saturate(0.8);
+      background: url('banner.png') center/cover no-repeat;
+      filter: brightness(0.5) saturate(0.7);
       transform: scale(1.05);
       animation: heroZoom 18s ease-in-out infinite alternate;
     }
@@ -131,9 +125,9 @@
       inset: 0;
       background: linear-gradient(
         135deg,
-        rgba(10,10,10,0.7) 0%,
-        rgba(26,92,255,0.08) 50%,
-        rgba(10,10,10,0.85) 100%
+        rgba(245,240,232,0.6) 0%,
+        rgba(26,92,255,0.03) 50%,
+        rgba(245,240,232,0.75) 100%
       );
     }
 
@@ -164,12 +158,12 @@
       animation: fadeUp 0.9s 0.5s forwards;
     }
 
-    .hero-title .line-blue { color: var(--blue); }
-    .hero-title .line-white { color: var(--white); font-style: italic; }
+    .line-blue  { color: var(--blue); }
+    .line-dark  { color: var(--text); font-style: italic; }
 
     .hero-subtitle {
       font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-      color: rgba(245,240,232,0.65);
+      color: var(--muted);
       margin-top: 1.8rem;
       max-width: 480px;
       line-height: 1.7;
@@ -182,7 +176,7 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1rem;
       letter-spacing: 0.15em;
-      color: rgba(245,240,232,0.4);
+      color: var(--faint);
       margin-top: 0.4rem;
       opacity: 0;
       animation: fadeUp 0.9s 1s forwards;
@@ -215,19 +209,19 @@
 
     .btn-outline {
       background: transparent;
-      color: var(--white);
+      color: var(--text);
       padding: 0.9rem 2.2rem;
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.05rem;
       letter-spacing: 0.15em;
-      border: 1px solid rgba(245,240,232,0.3);
+      border: 1px solid rgba(10,10,10,0.28);
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
       transition: border-color 0.2s, transform 0.15s;
     }
 
-    .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
+    .btn-outline:hover { border-color: var(--text); transform: translateY(-2px); }
 
     .hero-scroll {
       position: absolute;
@@ -238,7 +232,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
       opacity: 0;
       animation: fadeUp 1s 1.5s forwards;
     }
@@ -246,13 +239,13 @@
     .scroll-line {
       width: 1px;
       height: 50px;
-      background: linear-gradient(to bottom, rgba(245,240,232,0.5), transparent);
+      background: linear-gradient(to bottom, rgba(10,10,10,0.35), transparent);
       animation: scrollPulse 2s ease-in-out infinite;
     }
 
     @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
+      0%,100% { opacity: 0.35; }
+      50%      { opacity: 1; }
     }
 
     @keyframes fadeUp {
@@ -260,7 +253,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── SECTION COMMON ── */
+    /* ── SECTIONS ── */
     section { padding: 7rem 8vw; }
 
     .section-label {
@@ -269,7 +262,6 @@
       letter-spacing: 0.35em;
       color: var(--blue);
       margin-bottom: 1rem;
-      text-transform: uppercase;
     }
 
     .section-title {
@@ -280,11 +272,8 @@
       text-transform: uppercase;
     }
 
-    /* ── COLECCIONES CARRUSEL ── */
-    .collections {
-      background: var(--black);
-      padding-bottom: 5rem;
-    }
+    /* ── COLLECTIONS ── */
+    .collections { background: var(--bg); padding-bottom: 5rem; }
 
     .collections-header {
       display: flex;
@@ -295,46 +284,31 @@
       gap: 1.5rem;
     }
 
-    /* Tabs */
     .collection-tabs {
       display: flex;
-      gap: 0;
-      border: 1px solid rgba(255,255,255,0.12);
-      overflow: hidden;
+      border: 1px solid var(--border);
       border-radius: 2px;
+      overflow: hidden;
     }
 
     .tab-btn {
       background: transparent;
-      color: rgba(245,240,232,0.45);
+      color: var(--muted);
       border: none;
+      border-right: 1px solid var(--border);
       padding: 0.75rem 1.8rem;
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1rem;
       letter-spacing: 0.15em;
       cursor: pointer;
       transition: background 0.25s, color 0.25s;
-      border-right: 1px solid rgba(255,255,255,0.12);
-      position: relative;
     }
 
     .tab-btn:last-child { border-right: none; }
+    .tab-btn.active { background: var(--blue); color: #fff; }
+    .tab-btn:not(.active):hover { background: rgba(10,10,10,0.05); color: var(--text); }
 
-    .tab-btn.active {
-      background: var(--blue);
-      color: #fff;
-    }
-
-    .tab-btn:not(.active):hover {
-      background: rgba(255,255,255,0.05);
-      color: var(--white);
-    }
-
-    /* Carousel */
-    .carousel-wrapper {
-      position: relative;
-      overflow: hidden;
-    }
+    .carousel-wrapper { position: relative; overflow: hidden; }
 
     .carousel-track {
       display: flex;
@@ -353,11 +327,11 @@
       position: relative;
       overflow: hidden;
       min-height: 560px;
+      background: var(--bg-alt);
     }
 
     .slide-visual img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       transition: transform 0.7s ease;
     }
@@ -366,31 +340,32 @@
 
     .slide-tag {
       position: absolute;
-      top: 1.5rem;
-      left: 1.5rem;
+      top: 1.5rem; left: 1.5rem;
       font-family: 'Bebas Neue', sans-serif;
       font-size: 0.75rem;
       letter-spacing: 0.25em;
       padding: 0.35rem 0.9rem;
-      border: 1px solid rgba(255,255,255,0.5);
-      color: var(--white);
+      border: 1px solid rgba(10,10,10,0.2);
+      color: var(--text);
       backdrop-filter: blur(6px);
-      background: rgba(10,10,10,0.4);
+      background: rgba(245,240,232,0.7);
     }
 
     .slide-info {
-      background: #111;
+      background: var(--bg-card);
       padding: 4rem 3.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      border: 1px solid var(--border);
+      border-left: none;
     }
 
     .slide-number {
       font-family: 'Playfair Display', serif;
       font-size: 5rem;
       font-weight: 900;
-      color: rgba(255,255,255,0.04);
+      color: rgba(10,10,10,0.04);
       line-height: 1;
       margin-bottom: -1rem;
     }
@@ -404,39 +379,32 @@
       margin-bottom: 0.6rem;
     }
 
-    /* Per-collection accent colors */
-    .slide-0 .slide-collection-name { color: var(--white); }
-    .slide-0 .slide-tag { border-color: rgba(180,134,11,0.7); }
-    .slide-0 .accent-dot { background: var(--sur-gold); }
-
+    .slide-0 .slide-collection-name { color: var(--sur-green); }
+    .slide-0 .accent-dot            { background: var(--sur-gold); }
     .slide-1 .slide-collection-name { color: var(--norte-teal); }
-    .slide-1 .slide-tag { border-color: rgba(107,191,196,0.7); }
-    .slide-1 .accent-dot { background: var(--norte-orange); }
-
-    .slide-2 .slide-collection-name { color: #a8c89a; }
-    .slide-2 .slide-tag { border-color: rgba(168,200,154,0.7); }
-    .slide-2 .accent-dot { background: #a8c89a; }
+    .slide-1 .accent-dot            { background: var(--norte-org); }
+    .slide-2 .slide-collection-name { color: var(--este-dark); }
+    .slide-2 .accent-dot            { background: var(--este-dark); }
 
     .slide-subtitle {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 0.75rem;
       letter-spacing: 0.3em;
-      color: rgba(245,240,232,0.4);
+      color: var(--muted);
       text-transform: uppercase;
       margin-bottom: 1.8rem;
     }
 
     .slide-desc {
       font-size: 0.92rem;
-      color: rgba(245,240,232,0.6);
+      color: var(--muted);
       line-height: 1.8;
       margin-bottom: 2.5rem;
       max-width: 360px;
     }
 
     .accent-dot {
-      width: 32px;
-      height: 3px;
+      width: 32px; height: 3px;
       border-radius: 1px;
       margin-bottom: 1.5rem;
     }
@@ -449,12 +417,12 @@
       opacity: 0.85;
       transition: opacity 0.2s;
       margin-bottom: 2rem;
+      border: 1px solid var(--border);
     }
 
     .slide-design-preview:hover { opacity: 1; }
     .slide-design-preview img { width: 100%; display: block; }
 
-    /* Carousel nav */
     .carousel-nav {
       display: flex;
       align-items: center;
@@ -463,24 +431,19 @@
     }
 
     .carousel-dot {
-      width: 28px;
-      height: 2px;
-      background: rgba(255,255,255,0.2);
+      width: 28px; height: 2px;
+      background: rgba(10,10,10,0.15);
       cursor: pointer;
       transition: background 0.2s, width 0.2s;
     }
 
-    .carousel-dot.active {
-      background: var(--blue);
-      width: 52px;
-    }
+    .carousel-dot.active { background: var(--blue); width: 52px; }
 
     .carousel-arrow {
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--white);
-      width: 42px;
-      height: 42px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 42px; height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -490,14 +453,11 @@
       margin-left: auto;
     }
 
-    .carousel-arrow:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-    }
+    .carousel-arrow:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
 
     /* ── FEATURES ── */
     .features {
-      background: #0d0d0d;
+      background: var(--bg-alt);
       position: relative;
       overflow: hidden;
     }
@@ -508,7 +468,7 @@
       top: -200px; right: -200px;
       width: 600px; height: 600px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(26,92,255,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(26,92,255,0.04) 0%, transparent 70%);
     }
 
     .features-grid {
@@ -519,46 +479,29 @@
     }
 
     .feature-card {
-      background: #111;
+      background: var(--bg-card);
       padding: 2.5rem 2rem;
       border-top: 2px solid transparent;
       transition: border-color 0.3s, background 0.3s;
-      cursor: default;
     }
 
-    .feature-card:hover {
-      background: #161616;
-      border-color: var(--blue);
-    }
+    .feature-card:hover { background: var(--bg-hover); border-color: var(--blue); }
 
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 1.2rem;
-      display: block;
-    }
+    .feature-icon { font-size: 2rem; margin-bottom: 1.2rem; display: block; }
 
     .feature-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.15rem;
       font-weight: 700;
       margin-bottom: 0.7rem;
-      color: var(--white);
     }
 
-    .feature-desc {
-      font-size: 0.85rem;
-      color: rgba(245,240,232,0.5);
-      line-height: 1.75;
-    }
+    .feature-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.75; }
 
     /* ── PRICING ── */
-    .pricing {
-      background: var(--black);
-      text-align: center;
-    }
-
+    .pricing { background: var(--bg); text-align: center; }
     .pricing .section-title { margin-bottom: 0.5rem; }
-    .pricing-sub { color: rgba(245,240,232,0.45); font-size: 0.9rem; margin-bottom: 3.5rem; }
+    .pricing-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 3.5rem; }
 
     .pricing-cards {
       display: grid;
@@ -569,28 +512,22 @@
     }
 
     .pricing-card {
-      background: #111;
+      background: var(--bg-card);
       padding: 3rem 2rem;
       position: relative;
       text-align: left;
-      border-top: 2px solid rgba(255,255,255,0.06);
+      border-top: 2px solid var(--border);
       transition: border-color 0.3s;
     }
 
-    .pricing-card.featured {
-      background: var(--blue);
-      border-color: var(--blue);
-    }
-
-    .pricing-card:hover:not(.featured) {
-      border-color: rgba(26,92,255,0.5);
-    }
+    .pricing-card.featured { background: var(--blue); border-color: var(--blue); }
+    .pricing-card:hover:not(.featured) { border-color: rgba(26,92,255,0.5); }
 
     .pricing-card-label {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 0.7rem;
       letter-spacing: 0.3em;
-      color: rgba(245,240,232,0.4);
+      color: var(--muted);
       margin-bottom: 0.5rem;
     }
 
@@ -604,11 +541,9 @@
       margin-bottom: 1.5rem;
     }
 
-    .pricing-card-img {
-      width: 120px;
-      margin: 0 auto 1.5rem;
-      display: block;
-    }
+    .pricing-card.featured .pricing-card-name { color: #fff; }
+
+    .pricing-card-img { width: 120px; margin: 0 auto 1.5rem; display: block; }
 
     .pricing-price {
       font-family: 'Bebas Neue', sans-serif;
@@ -618,24 +553,18 @@
       margin-bottom: 0.3rem;
     }
 
-    .pricing-price-note {
-      font-size: 0.78rem;
-      color: rgba(245,240,232,0.4);
-      margin-bottom: 2rem;
-    }
+    .pricing-card.featured .pricing-price { color: #fff; }
 
+    .pricing-price-note { font-size: 0.78rem; color: var(--muted); margin-bottom: 2rem; }
     .pricing-card.featured .pricing-price-note { color: rgba(255,255,255,0.6); }
 
-    .pricing-features-list {
-      list-style: none;
-      margin-bottom: 2rem;
-    }
+    .pricing-features-list { list-style: none; margin-bottom: 2rem; }
 
     .pricing-features-list li {
       font-size: 0.85rem;
-      color: rgba(245,240,232,0.6);
+      color: var(--muted);
       padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       gap: 0.6rem;
@@ -643,16 +572,10 @@
 
     .pricing-card.featured .pricing-features-list li {
       color: rgba(255,255,255,0.85);
-      border-bottom-color: rgba(255,255,255,0.12);
+      border-bottom-color: rgba(255,255,255,0.15);
     }
 
-    .pricing-features-list li::before {
-      content: '✓';
-      font-size: 0.75rem;
-      color: var(--blue);
-      flex-shrink: 0;
-    }
-
+    .pricing-features-list li::before { content: '✓'; font-size: 0.75rem; color: var(--blue); flex-shrink: 0; }
     .pricing-card.featured .pricing-features-list li::before { color: #fff; }
 
     .btn-pricing {
@@ -662,37 +585,25 @@
       font-size: 1rem;
       letter-spacing: 0.2em;
       cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid var(--border);
       background: transparent;
-      color: var(--white);
+      color: var(--text);
       transition: all 0.2s;
       text-decoration: none;
       display: block;
       text-align: center;
     }
 
-    .btn-pricing:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-    }
+    .btn-pricing:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
 
-    .pricing-card.featured .btn-pricing {
-      background: #fff;
-      color: var(--blue);
-      border-color: #fff;
-    }
+    .pricing-card.featured .btn-pricing { background: #fff; color: var(--blue); border-color: #fff; }
+    .pricing-card.featured .btn-pricing:hover { background: rgba(255,255,255,0.88); }
 
-    .pricing-card.featured .btn-pricing:hover {
-      background: rgba(255,255,255,0.88);
-    }
-
-    /* badge */
     .badge {
       position: absolute;
-      top: -1px;
-      right: 1.5rem;
-      background: #fff;
-      color: var(--blue);
+      top: -1px; right: 1.5rem;
+      background: var(--blue);
+      color: #fff;
       font-family: 'Bebas Neue', sans-serif;
       font-size: 0.65rem;
       letter-spacing: 0.15em;
@@ -701,9 +612,9 @@
 
     /* ── FOOTER ── */
     footer {
-      background: #070707;
+      background: var(--bg-alt);
       padding: 3.5rem 8vw;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -711,21 +622,17 @@
       gap: 1.5rem;
     }
 
-    .footer-left img { height: 32px; filter: brightness(0.8); }
+    .footer-left img { height: 40px; width: auto; opacity: 0.55; }
 
     .footer-tagline {
       font-family: 'Bebas Neue', sans-serif;
       letter-spacing: 0.2em;
       font-size: 0.75rem;
-      color: rgba(245,240,232,0.25);
+      color: var(--faint);
       margin-top: 0.3rem;
     }
 
-    .footer-right {
-      font-size: 0.75rem;
-      color: rgba(245,240,232,0.2);
-      letter-spacing: 0.05em;
-    }
+    .footer-right { font-size: 0.75rem; color: var(--faint); letter-spacing: 0.05em; }
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
@@ -736,43 +643,29 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 66px; left: 0; right: 0;
-        background: rgba(10,10,10,0.97);
+        top: 82px; left: 0; right: 0;
+        background: rgba(245,240,232,0.97);
         padding: 2rem 4vw;
         gap: 1.5rem;
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
       }
 
-      .nav-links.open a { font-size: 1rem; }
+      .nav-links.open a { font-size: 1rem; color: var(--text); }
 
       section { padding: 5rem 6vw; }
 
-      .collection-slide {
-        grid-template-columns: 1fr;
-      }
-
+      .collection-slide { grid-template-columns: 1fr; }
       .slide-visual { min-height: 320px; }
-
-      .slide-info { padding: 2.5rem 1.8rem; }
-
+      .slide-info { padding: 2.5rem 1.8rem; border-left: 1px solid var(--border); border-top: none; }
       .collections-header { flex-direction: column; align-items: flex-start; }
-
       .hero-content { padding: 0 6vw; }
-
       .carousel-arrow { display: none; }
     }
 
-    /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.75s ease, transform 0.75s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 
@@ -781,7 +674,7 @@
   <!-- NAV -->
   <nav>
     <div class="nav-logo">
-      <img src="logo_lumi.png" alt="Lumilagro" style="height:38px; object-fit:cover; object-position:center; width:70px; border-radius:2px;" />
+      <img src="logo_lumi.png" alt="Lumilagro" />
     </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#colecciones">Colecciones</a></li>
@@ -802,7 +695,7 @@
       <p class="hero-eyebrow">Lumilagro — Nueva Colección 2025</p>
       <h1 class="hero-title">
         <span class="line-blue">Argentina</span><br>
-        <span class="line-white">Comparte</span><br>
+        <span class="line-dark">Comparte</span><br>
         <span class="line-blue">Paisajes</span>
       </h1>
       <p class="hero-subtitle">
@@ -836,7 +729,7 @@
     <div class="carousel-wrapper">
       <div class="carousel-track" id="carouselTrack">
 
-        <!-- Slide 0: SUR -->
+        <!-- SUR -->
         <div class="collection-slide slide-0">
           <div class="slide-visual">
             <span class="slide-tag">Edición Ilustrada</span>
@@ -847,17 +740,13 @@
             <h3 class="slide-collection-name">Sur</h3>
             <p class="slide-subtitle">Colección Ilustrada · Patagonia</p>
             <div class="accent-dot"></div>
-            <p class="slide-desc">
-              Montañas nevadas, bosques patagónicos, pumas, guanacos y la majestuosidad del cóndor andino. La colección Sur captura la esencia del sur argentino en trazos a mano, sobre un fondo crema con toques en verde oscuro y dorado.
-            </p>
-            <div class="slide-design-preview">
-              <img src="SUR_Diseño.png" alt="Diseño Sur" />
-            </div>
+            <p class="slide-desc">Montañas nevadas, bosques patagónicos, pumas, guanacos y la majestuosidad del cóndor andino. La colección Sur captura la esencia del sur argentino en trazos a mano, sobre un fondo crema con toques en verde oscuro y dorado.</p>
+            <div class="slide-design-preview"><img src="SUR_Diseño.png" alt="Diseño Sur" /></div>
             <a href="#precio" class="btn-outline">Conseguí el tuyo</a>
           </div>
         </div>
 
-        <!-- Slide 1: NORTE -->
+        <!-- NORTE -->
         <div class="collection-slide slide-1">
           <div class="slide-visual">
             <span class="slide-tag">Edición Geométrica</span>
@@ -868,17 +757,13 @@
             <h3 class="slide-collection-name">Norte</h3>
             <p class="slide-subtitle">Colección Geométrica · NOA</p>
             <div class="accent-dot"></div>
-            <p class="slide-desc">
-              El sol del desierto, las quebradas de Humahuaca, llamas y cactus. La colección Norte traduce la energía del noroeste argentino en formas geométricas retro, con la paleta cálida de la tierra y el cielo puna.
-            </p>
-            <div class="slide-design-preview">
-              <img src="Norte_Diseño.png" alt="Diseño Norte" />
-            </div>
+            <p class="slide-desc">El sol del desierto, las quebradas de Humahuaca, llamas y cactus. La colección Norte traduce la energía del noroeste argentino en formas geométricas retro, con la paleta cálida de la tierra y el cielo puna.</p>
+            <div class="slide-design-preview"><img src="Norte_Diseño.png" alt="Diseño Norte" /></div>
             <a href="#precio" class="btn-outline">Conseguí el tuyo</a>
           </div>
         </div>
 
-        <!-- Slide 2: LITORAL -->
+        <!-- LITORAL -->
         <div class="collection-slide slide-2">
           <div class="slide-visual">
             <span class="slide-tag">Edición Vintage</span>
@@ -889,19 +774,14 @@
             <h3 class="slide-collection-name">Litoral<br>Argentino</h3>
             <p class="slide-subtitle">Colección Vintage · Iguazú</p>
             <div class="accent-dot"></div>
-            <p class="slide-desc">
-              Cataratas que retumban, tucanes, yacarés y carpinchos entre la selva misionera. La colección Litoral Argentino es una ilustración exuberante sobre fondo negro profundo, de estética vintage de los años 30.
-            </p>
-            <div class="slide-design-preview">
-              <img src="ESTE_Diseño.png" alt="Diseño Litoral" />
-            </div>
+            <p class="slide-desc">Cataratas que retumban, tucanes, yacarés y carpinchos entre la selva misionera. La colección Litoral Argentino es una ilustración exuberante sobre fondo negro profundo, de estética vintage de los años 30.</p>
+            <div class="slide-design-preview"><img src="ESTE_Diseño.png" alt="Diseño Litoral" /></div>
             <a href="#precio" class="btn-outline">Conseguí el tuyo</a>
           </div>
         </div>
 
       </div>
 
-      <!-- Nav dots + arrows -->
       <div class="carousel-nav">
         <div class="carousel-dot active" data-index="0"></div>
         <div class="carousel-dot" data-index="1"></div>
@@ -918,7 +798,6 @@
       <p class="section-label">Por qué Lumilagro</p>
       <h2 class="section-title">El termo que<br>siempre te acompaña</h2>
     </div>
-
     <div class="features-grid">
       <div class="feature-card reveal">
         <span class="feature-icon">🌡️</span>
@@ -960,7 +839,6 @@
       <h2 class="section-title">Elegí tu paisaje</h2>
       <p class="pricing-sub">Las tres colecciones al mismo precio. Distintos, únicos, argentinos.</p>
     </div>
-
     <div class="pricing-cards">
 
       <div class="pricing-card reveal">
@@ -1015,33 +893,25 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-left">
-      <img src="logo_lumi.png" alt="Lumilagro" style="height:32px; width:60px; object-fit:cover; border-radius:2px; opacity:0.5;" />
+      <img src="logo_lumi.png" alt="Lumilagro" />
       <p class="footer-tagline">Va con vos. Siempre.</p>
     </div>
-    <div class="footer-right">
-      © 2025 Lumilagro · Argentina Comparte Paisajes
-    </div>
+    <div class="footer-right">© 2025 Lumilagro · Argentina Comparte Paisajes</div>
   </footer>
 
   <script>
-    // ── Hamburger ──
+    // Hamburger
     const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-    // Close nav on link click
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => navLinks.classList.remove('open'));
-    });
-
-    // ── Carousel ──
+    // Carousel
     let current = 0;
     const slides = document.querySelectorAll('.collection-slide');
-    const track = document.getElementById('carouselTrack');
-    const dots = document.querySelectorAll('.carousel-dot');
-    const tabs = document.querySelectorAll('.tab-btn');
+    const track  = document.getElementById('carouselTrack');
+    const dots   = document.querySelectorAll('.carousel-dot');
+    const tabs   = document.querySelectorAll('.tab-btn');
 
     function goTo(index) {
       current = (index + slides.length) % slides.length;
@@ -1052,27 +922,18 @@
 
     document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
     document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
-
     dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.index)));
     tabs.forEach(t => t.addEventListener('click', () => goTo(+t.dataset.index)));
 
-    // Auto-play
     let autoPlay = setInterval(() => goTo(current + 1), 5000);
     document.querySelector('.carousel-wrapper').addEventListener('mouseenter', () => clearInterval(autoPlay));
-    document.querySelector('.carousel-wrapper').addEventListener('mouseleave', () => {
-      autoPlay = setInterval(() => goTo(current + 1), 5000);
-    });
+    document.querySelector('.carousel-wrapper').addEventListener('mouseleave', () => { autoPlay = setInterval(() => goTo(current + 1), 5000); });
 
-    // Touch/swipe support
     let touchStartX = 0;
     track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
-    track.addEventListener('touchend', e => {
-      const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
-    });
+    track.addEventListener('touchend',   e => { const d = touchStartX - e.changedTouches[0].clientX; if (Math.abs(d) > 50) goTo(d > 0 ? current + 1 : current - 1); });
 
-    // ── Scroll Reveal ──
-    const revealEls = document.querySelectorAll('.reveal');
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -1082,12 +943,8 @@
       });
     }, { threshold: 0.12 });
 
-    revealEls.forEach(el => observer.observe(el));
-
-    // Stagger feature cards
-    document.querySelectorAll('.feature-card').forEach((card, i) => {
-      card.style.transitionDelay = `${i * 0.07}s`;
-    });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.feature-card').forEach((card, i) => { card.style.transitionDelay = `${i * 0.07}s`; });
   </script>
 
 </body>
